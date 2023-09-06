@@ -202,10 +202,12 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClanoviController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IzdanjeKnjigeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="DTO\ClanGetDTO.cs" />
+    <Compile Include="DTO\ClanSaveDTO.cs" />
     <Compile Include="DTO\NajnovijaIzdanjaDTO.cs" />
     <Compile Include="Entities\Autor.cs">
       <DependentUpon>BibliotekaModels.tt</DependentUpon>
@@ -340,6 +342,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\IzdanjeKnjige\ListaIzdanja.cshtml" />
+    <Content Include="Views\Clanovi\Index.cshtml" />
+    <Content Include="Views\Clanovi\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
