@@ -19,9 +19,9 @@
                             <li class="list-group-item"><strong>Ime: </strong> @Model.Ime</li>
                             <li class="list-group-item"><strong>Prezime: </strong> @Model.Prezime</li>
                             <li class="list-group-item"><strong>Adresa: </strong> @Model.Adresa</li>
-                            <li class="list-group-item"><strong>Datum Rođenja: </strong> @Model.DatumRodjenja.ToString("yyyy-MM-dd")</li>
+                            <li class="list-group-item"><strong>Datum rođenja: </strong> @Model.DatumRodjenja.ToString("yyyy/MM/dd")</li>
                             <li class="list-group-item"><strong>Email: </strong> @Model.Email</li>
-                            <li class="list-group-item"><strong>Matični Broj: </strong> @Model.MaticniBroj</li>
+                            <li class="list-group-item"><strong>Matični broj: </strong> @Model.MaticniBroj</li>
                         </ul>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     @Html.AntiForgeryToken()
 
                     <span class="mr-2">
-                        @Html.ActionLink("Odustani", "Index", null, new { @class = "btn btn-secondary" })
+                        @Html.ActionLink("Nazad", "Index", null, new { @class = "btn btn-secondary" })
                     </span>
 
                     <button type="button" class="btn btn-danger" onclick="openDeleteModal();">Obriši</button>
@@ -60,7 +60,8 @@
                 <p>Jeste li sigurni da želite obrisati ovog člana?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Odustani</button>
+                <button type="button" class="btn btn-secondary" onclick="closeDeleteModal();">Odustani</button>
+
                 <input type="submit" value="Obriši" class="btn btn-danger" />
             </div>
         </div>
@@ -73,7 +74,11 @@
             $('#deleteModal').modal('show');
         }
 
-        // Function to submit the form when the modal "Izbriši" button is clicked
+        function closeDeleteModal() {
+            $('#deleteModal').modal('hide');
+        }
+
+        
         $('#deleteModal').on('click', '.btn-danger', function () {
             $('#deleteForm').submit();
         });
