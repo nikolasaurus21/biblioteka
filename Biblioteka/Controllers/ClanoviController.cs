@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Biblioteka.Controllers
 {
+    [Authorize]
     public class ClanoviController : Controller
     {
         private BibliotekaEntities _context;
@@ -23,7 +24,7 @@ namespace Biblioteka.Controllers
             _context.Dispose();
         }
 
-        // GET: Clanovi
+       
         public ActionResult Index()
         {
             var clanoviDTO = _context.Clan.Select(c => new ClanGetDTO
@@ -47,14 +48,14 @@ namespace Biblioteka.Controllers
             return View();
         }
 
-        // POST: Clanovi/Create
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create( ClanSaveDTO clanSaveDTO)
         {
 
-            var existingClan = _context.Clan.SingleOrDefault(c => c.MaticniBroj == clanSaveDTO.MaticniBroj);
-            if (existingClan != null)
+            var postojeciClan = _context.Clan.SingleOrDefault(c => c.MaticniBroj == clanSaveDTO.MaticniBroj);
+            if (postojeciClan != null)
             {
                 ModelState.AddModelError("MaticniBroj", "Matični broj već postoji.");
             }
@@ -77,6 +78,92 @@ namespace Biblioteka.Controllers
                 return RedirectToAction("Index");
             }
             return View(clanSaveDTO);
+        }
+
+       
+        public ActionResult Edit(int id)
+        {
+            var clan = _context.Clan.SingleOrDefault(c => c.ClanID == id);
+
+            if (clan == null)
+                return HttpNotFound();
+
+            var clanDto = new ClanSaveDTO
+            {
+                ClanID = clan.ClanID,
+                Ime = clan.Ime,
+                Prezime = clan.Prezime,
+                MaticniBroj = clan.MaticniBroj,
+                Email = clan.Email,
+                Adresa = clan.Adresa,
+                DatumRodjenja = clan.DatumRodjenja
+            };
+
+            return View(clanDto);
+        }
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ClanSaveDTO clanDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Edit", clanDto);
+            }
+
+            var clanInDb = _context.Clan.SingleOrDefault(c => c.ClanID == clanDto.ClanID);
+
+            if (clanInDb == null)
+                return HttpNotFound();
+
+            clanInDb.Ime = clanDto.Ime;
+            clanInDb.Prezime = clanDto.Prezime;
+            clanInDb.MaticniBroj = clanDto.MaticniBroj;
+            clanInDb.Email = clanDto.Email;
+            clanInDb.Adresa = clanDto.Adresa;
+            clanInDb.DatumRodjenja = clanDto.DatumRodjenja;
+
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Clanovi");
+        }
+
+        public ActionResult Delete(int id)
+        {
+            var clan = _context.Clan.SingleOrDefault(c => c.ClanID == id);
+
+            if (clan == null)
+            {  return HttpNotFound(); }
+                
+            var clanById = new ClanGetDTO
+            {
+                ClanID = clan.ClanID,
+                Ime = clan.Ime,
+                Prezime = clan.Prezime,
+                Adresa = clan.Adresa,
+                DatumRodjenja= clan.DatumRodjenja,
+                Email = clan.Email,
+                MaticniBroj= clan.MaticniBroj
+            };
+            return View(clanById);
+        }
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var clan = _context.Clan.SingleOrDefault(c => c.ClanID == id);
+
+            if (clan == null)
+            {
+
+                return HttpNotFound();
+            }
+
+            _context.Clan.Remove(clan);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

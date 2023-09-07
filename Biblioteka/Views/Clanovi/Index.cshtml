@@ -15,11 +15,9 @@
         <thead>
             <tr>
                 <th>
-                    Ime
+                    Ime i prezime
                 </th>
-                <th>
-                    Prezime
-                </th>
+                
                 <th>
                     Matični broj
                 </th>
@@ -46,11 +44,10 @@
             {
                 <tr accesskey="@clan.ClanID">
                     <td>
-                        @clan.Ime
+                        @Html.ActionLink($"{@clan.Ime} {@clan.Prezime}", "Edit", "Clanovi", new { id = clan.ClanID }, null)
                     </td>
-                    <td>
-                        @clan.Prezime
-                    </td>
+
+
                     <td>
                         @clan.MaticniBroj
                     </td>
@@ -64,7 +61,7 @@
                         @Html.DisplayFor(modelItem => clan.DatumRodjenja)
                     </td>
                     <td class="text-center">
-                        @Html.ActionLink("Obriši", "Delete", "Customers", new { id = clan.ClanID }, new { @class = "btn btn-danger btn-sm" })
+                        @Html.ActionLink("Obriši", "Delete", "Clanovi", new { id = clan.ClanID }, new { @class = "btn btn-danger btn-sm" })
 
                     </td>
 

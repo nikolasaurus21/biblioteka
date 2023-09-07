@@ -4,74 +4,91 @@
 }
 
 <main>
-    <section class="row" aria-labelledby="aspnetTitle">
-        <h1 id="title">ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-        <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-    </section>
+    @if (Request.IsAuthenticated)
+    {
+        <!-- Prikazuje se kad je korisnik ulogovan -->
+        <section class="row" aria-labelledby="aspnetTitle">
+            <h1 id="title">ASP.NET</h1>
+            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+            <p><a href="https://asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
 
-    <div class="row mt-4">
+            <div class="row mt-4">
 
-        <!-- Prva kartica -->
+                <!-- Prva kartica -->
 
-        <div class=" col-md-6">
-            <div class="card bg-dark text-white h-100">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-3">
+                <div class=" col-md-6">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-3">
 
-                            <span style="font-size: 58px;">📚</span>
-                        </div>
-                        <div class="col-9 text-end">
-                            <div class="display-4">
-                                <span>42</span>
+                                    <span style="font-size: 58px;">📚</span>
+                                </div>
+                                <div class="col-9 text-end">
+                                    <div class="display-4">
+                                        <span>42</span>
+                                    </div>
+                                    <div>Najnovija izdanja!</div>
+                                </div>
                             </div>
-                            <div>Najnovija izdanja!</div>
                         </div>
+                        <a href="/IzdanjeKnjige/ListaIzdanja" class="text-white">
+                            <div class="card-footer bg-white">
+                                <div class="d-flex justify-content-between align-items-center text-dark text-decoration-none">
+                                    <span>Detaljnije...</span>
+                                    <span> → </span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <a href="/IzdanjeKnjige/ListaIzdanja" class="text-white">
-                    <div class="card-footer bg-white">
-                        <div class="d-flex justify-content-between align-items-center text-dark text-decoration-none">
-                            <span>Detaljnije...</span>
-                            <span> → </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
 
 
 
-        <!-- Druga kartica -->
-        <div class="col-md-6">
-            <div class="card bg-dark text-white h-100">
-                <div class="card-header">
-                    <div class="row">
-                        <div class="col-3">
-                           
-                            <span style="font-size: 58px;">⚠️</span>
-                        </div>
-                        <div class="col-9 text-end">
-                            <div class="display-4">
-                                <span>42</span>
+                <!-- Druga kartica -->
+                <div class="col-md-6">
+                    <div class="card bg-dark text-white h-100">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-3">
+
+                                    <span style="font-size: 58px;">⚠️</span>
+                                </div>
+                                <div class="col-9 text-end">
+                                    <div class="display-4">
+                                        <span>42</span>
+                                    </div>
+                                    <div>Prekoračenja!</div>
+                                </div>
                             </div>
-                            <div>Prekoračenja!</div>
                         </div>
+                        <a href="#" class="text-white">
+                            <div class="card-footer bg-white">
+                                <div class="d-flex justify-content-between align-items-center text-dark text-decoration-none">
+                                    <span>Detaljnije...</span>
+                                    <span> → </span>
+                                </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-                <a href="#" class="text-white">
-                    <div class="card-footer bg-white">
-                        <div class="d-flex justify-content-between align-items-center text-dark text-decoration-none">
-                            <span>Detaljnije...</span>
-                            <span> → </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
 
-    </div>
+            </div>
+        </section>
+    }
+    else
+    {
+        <!-- Prikazuje se kad korisnik nije ulogovan -->
+        <section class="row" aria-labelledby="welcomeTitle">
+            <h1 id="welcomeTitle">Dobrodošli!</h1>
+            <p class="lead">Da biste videli više, molimo vas da se prijavite.</p>
+            <p><a href="@Url.Action("Login", "Account")" class="btn btn-dark btn-md">Prijavite se &raquo;</a></p>
+        </section>
+    }
 </main>
+
+
+
+
 
 

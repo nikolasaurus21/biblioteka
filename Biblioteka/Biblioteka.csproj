@@ -206,6 +206,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IzdanjeKnjigeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="DTO\ClanGetByIdDTO.cs" />
     <Compile Include="DTO\ClanGetDTO.cs" />
     <Compile Include="DTO\ClanSaveDTO.cs" />
     <Compile Include="DTO\NajnovijaIzdanjaDTO.cs" />
@@ -344,6 +345,8 @@
     <Content Include="Views\IzdanjeKnjige\ListaIzdanja.cshtml" />
     <Content Include="Views\Clanovi\Index.cshtml" />
     <Content Include="Views\Clanovi\Create.cshtml" />
+    <Content Include="Views\Clanovi\Edit.cshtml" />
+    <Content Include="Views\Clanovi\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
