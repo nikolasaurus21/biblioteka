@@ -7,8 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Biblioteka.Entities
+namespace Biblioteka
 {
+    using Biblioteka.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
@@ -25,11 +26,13 @@ namespace Biblioteka.Entities
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Autor> Autor { get; set; }
-        public virtual DbSet<IzdanjeKnjige> IzdanjeKnjige { get; set; }
-        public virtual DbSet<IzdavackaKuca> IzdavackaKuca { get; set; }
-        public virtual DbSet<Kategorija> Kategorija { get; set; }
+        public virtual DbSet<Autori> Autori { get; set; }
+        public virtual DbSet<Clanovi> Clanovi { get; set; }
+        public virtual DbSet<IzdanjaKnjiga> IzdanjaKnjiga { get; set; }
+        public virtual DbSet<IzdavackeKuce> IzdavackeKuce { get; set; }
+        public virtual DbSet<Kategorije> Kategorije { get; set; }
         public virtual DbSet<Knjige> Knjige { get; set; }
-        public virtual DbSet<Clan> Clan { get; set; }
+        public virtual DbSet<Pozajmice> Pozajmice { get; set; }
+        public virtual DbSet<PrimjerciKnjiga> PrimjerciKnjiga { get; set; }
     }
 }

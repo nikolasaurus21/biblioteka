@@ -12,15 +12,17 @@ namespace Biblioteka.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class IzdanjeKnjige
+    public partial class Pozajmice
     {
-        public int IzdanjeID { get; set; }
-        public int Godina { get; set; }
-        public int IzdavackaKucaID { get; set; }
-        public string SlikaKorica { get; set; }
-        public int KnjigaID { get; set; }
+        public int Id { get; set; }
+        public string BibliotekarId { get; set; }
+        public int ClanId { get; set; }
+        public int PrimjerakKnjigeId { get; set; }
+        public System.DateTime DatumPozajmice { get; set; }
+        public System.DateTime DatumZakazanogVracanja { get; set; }
+        public Nullable<System.DateTime> DatumVracanja { get; set; }
     
-        public virtual IzdavackaKuca IzdavackaKuca { get; set; }
-        public virtual Knjige Knjige { get; set; }
+        public virtual Clanovi Clanovi { get; set; }
+        public virtual PrimjerciKnjiga PrimjerciKnjiga { get; set; }
     }
 }

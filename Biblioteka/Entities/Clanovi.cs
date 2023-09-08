@@ -12,14 +12,23 @@ namespace Biblioteka.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Clan
+    public partial class Clanovi
     {
-        public int ClanID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Clanovi()
+        {
+            this.Pozajmice = new HashSet<Pozajmice>();
+        }
+    
+        public int Id { get; set; }
         public string Ime { get; set; }
         public string Prezime { get; set; }
         public string MaticniBroj { get; set; }
         public string Email { get; set; }
         public string Adresa { get; set; }
         public System.DateTime DatumRodjenja { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pozajmice> Pozajmice { get; set; }
     }
 }

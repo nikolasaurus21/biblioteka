@@ -34,18 +34,20 @@ namespace Biblioteka.Controllers
             int trenutnaGodina = DateTime.Now.Year; 
             int proslaGodina = trenutnaGodina - 1; 
 
-            var izdanja = _context.IzdanjeKnjige
-                .Include(x => x.IzdavackaKuca)
+            var izdanja = _context.IzdanjaKnjiga
+                .Include(x => x.IzdavackeKuce)
                 .Include(x => x.Knjige)
                 .Where(x => x.Godina >= proslaGodina) 
                 .OrderBy(x => x.Knjige.Naslov) 
                 .Select(x => new NajnovijaIzdanjaDTO
                 {
-                    IzdanjeID = x.IzdanjeID,
+                    IzdanjeID = x.Id,
                     Godina = x.Godina,
-                    IzdavackaKuca = x.IzdavackaKuca.Naziv,
+                    IzdavackaKuca = x.IzdavackeKuce.Naziv,
                     Knjiga = x.Knjige.Naslov,
                     SlikaKorica = x.SlikaKorica,
+                    BrojNaStanju = x.Knjige.BrojNaStanju,
+                    BrojIzdatih = x.Knjige.BrojIzdatih,
                 }).ToList();
 
             //return View(izdanja.ToPagedList(pageNumber, pageSize));

@@ -12,25 +12,25 @@ namespace Biblioteka.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Knjige
+    public partial class IzdanjaKnjiga
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Knjige()
+        public IzdanjaKnjiga()
         {
-            this.IzdanjaKnjiga = new HashSet<IzdanjaKnjiga>();
+            this.PrimjerciKnjiga = new HashSet<PrimjerciKnjiga>();
         }
     
         public int Id { get; set; }
-        public string Naslov { get; set; }
-        public int AutorId { get; set; }
-        public int GodinaOriginala { get; set; }
-        public int KategorijaId { get; set; }
+        public int KnjigeId { get; set; }
+        public int IzdavackaKucaId { get; set; }
+        public string SlikaKorica { get; set; }
+        public int Godina { get; set; }
         public int BrojNaStanju { get; set; }
         public int BrojIzdatih { get; set; }
     
-        public virtual Autori Autori { get; set; }
+        public virtual IzdavackeKuce IzdavackeKuce { get; set; }
+        public virtual Knjige Knjige { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IzdanjaKnjiga> IzdanjaKnjiga { get; set; }
-        public virtual Kategorije Kategorije { get; set; }
+        public virtual ICollection<PrimjerciKnjiga> PrimjerciKnjiga { get; set; }
     }
 }

@@ -27,9 +27,9 @@ namespace Biblioteka.Controllers
        
         public ActionResult Index()
         {
-            var clanoviDTO = _context.Clan.Select(c => new ClanGetDTO
+            var clanoviDTO = _context.Clanovi.Select(c => new ClanGetDTO
             {
-                ClanID = c.ClanID,
+                ClanID = c.Id,
                 Ime = c.Ime,
                 Prezime = c.Prezime,
                 MaticniBroj = c.MaticniBroj,
@@ -54,7 +54,7 @@ namespace Biblioteka.Controllers
         public ActionResult Create( ClanSaveDTO clanSaveDTO)
         {
 
-            var postojeciClan = _context.Clan.SingleOrDefault(c => c.MaticniBroj == clanSaveDTO.MaticniBroj);
+            var postojeciClan = _context.Clanovi.SingleOrDefault(c => c.MaticniBroj == clanSaveDTO.MaticniBroj);
             if (postojeciClan != null)
             {
                 ModelState.AddModelError("MaticniBroj", "Matični broj već postoji.");
@@ -62,7 +62,7 @@ namespace Biblioteka.Controllers
             if (ModelState.IsValid)
             {
                 
-                var clan = new Clan
+                var clan = new Clanovi
                 {
                     Ime = clanSaveDTO.Ime,
                     Prezime = clanSaveDTO.Prezime,
@@ -72,7 +72,7 @@ namespace Biblioteka.Controllers
                     DatumRodjenja = clanSaveDTO.DatumRodjenja
                 };
 
-                _context.Clan.Add(clan);
+                _context.Clanovi.Add(clan);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -83,14 +83,14 @@ namespace Biblioteka.Controllers
        
         public ActionResult Edit(int id)
         {
-            var clan = _context.Clan.SingleOrDefault(c => c.ClanID == id);
+            var clan = _context.Clanovi.SingleOrDefault(c => c.Id == id);
 
             if (clan == null)
                 return HttpNotFound();
 
             var clanDto = new ClanSaveDTO
             {
-                ClanID = clan.ClanID,
+                ClanID = clan.Id,
                 Ime = clan.Ime,
                 Prezime = clan.Prezime,
                 MaticniBroj = clan.MaticniBroj,
@@ -112,7 +112,7 @@ namespace Biblioteka.Controllers
                 return View("Edit", clanDto);
             }
 
-            var clanInDb = _context.Clan.SingleOrDefault(c => c.ClanID == clanDto.ClanID);
+            var clanInDb = _context.Clanovi.SingleOrDefault(c => c.Id == clanDto.ClanID);
 
             if (clanInDb == null)
                 return HttpNotFound();
@@ -131,14 +131,14 @@ namespace Biblioteka.Controllers
 
         public ActionResult Delete(int id)
         {
-            var clan = _context.Clan.SingleOrDefault(c => c.ClanID == id);
+            var clan = _context.Clanovi.SingleOrDefault(c => c.Id == id);
 
             if (clan == null)
             {  return HttpNotFound(); }
                 
             var clanById = new ClanGetDTO
             {
-                ClanID = clan.ClanID,
+                ClanID = clan.Id,
                 Ime = clan.Ime,
                 Prezime = clan.Prezime,
                 Adresa = clan.Adresa,
@@ -152,7 +152,7 @@ namespace Biblioteka.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var clan = _context.Clan.SingleOrDefault(c => c.ClanID == id);
+            var clan = _context.Clanovi.SingleOrDefault(c => c.Id == id);
 
             if (clan == null)
             {
@@ -160,7 +160,7 @@ namespace Biblioteka.Controllers
                 return HttpNotFound();
             }
 
-            _context.Clan.Remove(clan);
+            _context.Clanovi.Remove(clan);
             _context.SaveChanges();
 
             return RedirectToAction("Index");

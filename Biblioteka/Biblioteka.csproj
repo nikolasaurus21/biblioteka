@@ -210,38 +210,44 @@
     <Compile Include="DTO\ClanGetDTO.cs" />
     <Compile Include="DTO\ClanSaveDTO.cs" />
     <Compile Include="DTO\NajnovijaIzdanjaDTO.cs" />
-    <Compile Include="Entities\Autor.cs">
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+    <Compile Include="Entities\Autori.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\BibliotekaModels.Context.cs">
+    <Compile Include="Entities\BibliotekaEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaModels.Context.tt</DependentUpon>
+      <DependentUpon>BibliotekaEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\BibliotekaModels.cs">
+    <Compile Include="Entities\BibliotekaEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\BibliotekaModels.Designer.cs">
+    <Compile Include="Entities\BibliotekaEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BibliotekaModels.edmx</DependentUpon>
+      <DependentUpon>BibliotekaEntities.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Clan.cs">
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+    <Compile Include="Entities\Clanovi.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\IzdanjeKnjige.cs">
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+    <Compile Include="Entities\IzdanjaKnjiga.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\IzdavackaKuca.cs">
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+    <Compile Include="Entities\IzdavackeKuce.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entities\Kategorija.cs">
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+    <Compile Include="Entities\Kategorije.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Knjige.cs">
-      <DependentUpon>BibliotekaModels.tt</DependentUpon>
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Pozajmice.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PrimjerciKnjiga.cs">
+      <DependentUpon>BibliotekaEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,15 +277,15 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Entities\BibliotekaModels.Context.tt">
+    <Content Include="Entities\BibliotekaEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BibliotekaModels.edmx</DependentUpon>
-      <LastGenOutput>BibliotekaModels.Context.cs</LastGenOutput>
+      <DependentUpon>BibliotekaEntities.edmx</DependentUpon>
+      <LastGenOutput>BibliotekaEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entities\BibliotekaModels.tt">
+    <Content Include="Entities\BibliotekaEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BibliotekaModels.edmx</DependentUpon>
-      <LastGenOutput>BibliotekaModels.cs</LastGenOutput>
+      <DependentUpon>BibliotekaEntities.edmx</DependentUpon>
+      <LastGenOutput>BibliotekaEntities.cs</LastGenOutput>
     </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -290,12 +296,12 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Entities\BibliotekaModels.edmx">
+    <EntityDeploy Include="Entities\BibliotekaEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BibliotekaModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>BibliotekaEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entities\BibliotekaModels.edmx.diagram">
-      <DependentUpon>BibliotekaModels.edmx</DependentUpon>
+    <Content Include="Entities\BibliotekaEntities.edmx.diagram">
+      <DependentUpon>BibliotekaEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

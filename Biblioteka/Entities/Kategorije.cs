@@ -12,17 +12,16 @@ namespace Biblioteka.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class Autor
+    public partial class Kategorije
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Autor()
+        public Kategorije()
         {
             this.Knjige = new HashSet<Knjige>();
         }
     
-        public int AutorID { get; set; }
-        public string Ime { get; set; }
-        public string Prezime { get; set; }
+        public int Id { get; set; }
+        public string Naziv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Knjige> Knjige { get; set; }

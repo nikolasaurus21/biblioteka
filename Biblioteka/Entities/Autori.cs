@@ -12,18 +12,19 @@ namespace Biblioteka.Entities
     using System;
     using System.Collections.Generic;
     
-    public partial class IzdavackaKuca
+    public partial class Autori
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public IzdavackaKuca()
+        public Autori()
         {
-            this.IzdanjeKnjige = new HashSet<IzdanjeKnjige>();
+            this.Knjige = new HashSet<Knjige>();
         }
     
-        public int IzdavackaKucaID { get; set; }
-        public string Naziv { get; set; }
+        public int Id { get; set; }
+        public string Ime { get; set; }
+        public string Prezime { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IzdanjeKnjige> IzdanjeKnjige { get; set; }
+        public virtual ICollection<Knjige> Knjige { get; set; }
     }
 }
