@@ -314,6 +314,16 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Slike\slika1.jpg" />
+    <Content Include="Slike\slika2.jpg" />
+    <Content Include="Slike\slika10.jpg" />
+    <Content Include="Slike\slika9.jpg" />
+    <Content Include="Slike\slika8.jpg" />
+    <Content Include="Slike\slika7.jpg" />
+    <Content Include="Slike\slika6.jpg" />
+    <Content Include="Slike\slika5.jpg" />
+    <Content Include="Slike\slika4.jpg" />
+    <Content Include="Slike\slika3.jpg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
