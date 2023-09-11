@@ -5,11 +5,6 @@
 @{
     ViewBag.Title = "ListaIzdanja";
 }
-@*<div id="preloader" class="d-flex justify-content-center align-items-center" style="position: fixed; top: 0; left: 0; z-index: 9999; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);">
-    <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Loading...</span>
-    </div>
-</div>*@
 
 <h2 class="navbar-text text-center">Najnovija izdanja</h2>
 
@@ -39,7 +34,8 @@
                     <td>@izdanje.IzdavackaKuca</td>
                     <td>@izdanje.BrojIzdatih</td>
                     <td>@izdanje.BrojNaStanju</td>
-                    <td>
+
+                    <td class="align-content-center justify-content-center d-flex image-column">
                         <img id="slika-@izdanje.IzdanjeID" src="@Url.Content("~/Slike/" + izdanje.SlikaKorica)" alt="@izdanje.SlikaKorica" class="d-sm-block " width="50" height="50" data-toggle="modal" data-target="#imageModal-@izdanje.IzdanjeID" />
                         <!-- prikazivanje slike u punom formatu -->
                         <div class="modal fade" id="imageModal-@izdanje.IzdanjeID" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
@@ -75,41 +71,9 @@
         </nav>
     </div>
 
-
-
-
-    @*<div class="d-flex justify-content-center">
-            @Html.PagedListPager((IPagedList)Model, page => Url.Action("ListaIzdanja", new { page }),
-                new PagedListRenderOptions
-                {
-                    //odje moze da se dodaju neke sitnice ako treba ali ja necu nista
-
-
-
-                })
-        </div>*@
-
-
-
-
 </div>
 @section Scripts {
     <script>
-        //$(document).ready(function () {
-        //    // Dodaje Bootstrap klasu 'btn-dark' i margine na sve elemente unutar .pagination
-        //    $(".pagination li a").addClass("btn btn-dark m-1");
-
-        //    // Promeni boju za trenutno aktivno dugme
-        //    $(".pagination li.active a").removeClass("btn-dark").addClass("btn-success");
-        //});
-
-        //$(window).on('load', function () {
-        //    console.log('Window is loaded, should remove preloader now.');
-        //    $('#preloader').fadeOut('slow', function () {
-        //        console.log('Preloader removed.');
-        //    });
-        //});
-
         $(document).ready(function () {
             $("img[id^='slika-']").click(function () {
                 var imgSrc = $(this).attr("src");
@@ -128,7 +92,7 @@
 
 
         let currentPage = 1;
-        let rowsPerPage = 7;
+        let rowsPerPage = 6;
 
         $(document).ready(function () {
             const rows = $('#izdanja tbody tr');
@@ -178,7 +142,12 @@
 
     </script>
 }
-
+    <style>
+        .image-column img:hover {
+            filter: brightness(70%);
+            transition: all 0.3s ease-in;
+        }
+    </style>
 
 
 
