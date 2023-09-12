@@ -1,5 +1,6 @@
 ﻿using Biblioteka.DTO;
 using Biblioteka.Entities;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,8 +26,11 @@ namespace Biblioteka.Controllers
         }
 
        
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
+            int pageSize = 7;
+            int pageNumber = (page ?? 1);
+
             var clanoviDTO = _context.Clanovi.Select(c => new ClanGetDTO
             {
                 ClanID = c.Id,
@@ -38,7 +42,7 @@ namespace Biblioteka.Controllers
                 DatumRodjenja = c.DatumRodjenja
             })
             .OrderByDescending(c => c.ClanID)
-            .ToList();
+            .ToPagedList(pageNumber, pageSize);
 
             return View(clanoviDTO);
         }

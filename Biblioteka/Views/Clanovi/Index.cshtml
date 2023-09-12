@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Biblioteka.DTO.ClanGetDTO>
+﻿@using PagedList;
+@model IPagedList<Biblioteka.DTO.ClanGetDTO>
 @{
     ViewBag.Title = "Index";
 }
@@ -8,8 +9,8 @@
 <div class="table-responsive">
     <div class=" d-flex justify-content-between">
 
-    @Html.ActionLink("Nazad", "Index", "Home", null, new { @class = "btn btn-secondary mb-2" })
-    @Html.ActionLink("Dodaj novog člana", "Create", "Clanovi", null, new { @class = "btn btn-success mb-2" })
+        @Html.ActionLink("Nazad", "Index", "Home", null, new { @class = "btn btn-secondary mb-2" })
+        @Html.ActionLink("Dodaj novog člana", "Create", "Clanovi", null, new { @class = "btn btn-success mb-2" })
     </div>
     <table id="clanovi" class="table table-bordered table table-striped">
         <thead>
@@ -17,7 +18,7 @@
                 <th>
                     Ime i prezime
                 </th>
-                
+
                 <th>
                     Matični broj
                 </th>
@@ -72,65 +73,44 @@
 
     <div class="d-flex justify-content-center">
         <nav aria-label="Page navigation">
-            <ul id="pagination" class="pagination ">
+            <ul class="pagination">
+                <!-- Prethodna stranica -->
+                @if (Model.HasPreviousPage)
+                {
+                    <li>@Html.ActionLink("<<", "Index", new { page = Model.PageNumber - 1 }, new { @class = "btn btn-dark btn-sm m-1" })</li>
+                }
+
+                <!-- Prva stranica -->
+                <li>@Html.ActionLink("1", "Index", new { page = 1 }, new { @class = 1 == Model.PageNumber ? "btn btn-dark btn-sm m-1" : "btn btn-secondary btn-sm m-1" })</li>
+
+                @if (Model.PageNumber > 5)
+                {
+                    <li><span class="btn btn-secondary btn-sm m-1">...</span></li>
+                }
+
+                <!-- Brojevi stranica -->
+                @for (var pageNumber = Math.Max(2, Model.PageNumber - 2); pageNumber <= Math.Min(Model.PageCount - 1, Model.PageNumber + 2); pageNumber++)
+                {
+                    <li>@Html.ActionLink(pageNumber.ToString(), "Index", new { page = pageNumber }, new { @class = pageNumber == Model.PageNumber ? "btn btn-dark btn-sm m-1" : "btn btn-secondary btn-sm m-1" })</li>
+                }
+
+                @if (Model.PageNumber < Model.PageCount - 4)
+                {
+                    <li><span class="btn btn-secondary btn-sm m-1">...</span></li>
+                }
+
+                <!-- Zadnja stranica -->
+                <li>@Html.ActionLink(Model.PageCount.ToString(), "Index", new { page = Model.PageCount }, new { @class = Model.PageCount == Model.PageNumber ? "btn btn-dark btn-sm m-1" : "btn btn-secondary btn-sm m-1" })</li>
+
+                <!-- Sledeća stranica -->
+                @if (Model.HasNextPage)
+                {
+                    <li>@Html.ActionLink(">>", "Index", new { page = Model.PageNumber + 1 }, new { @class = "btn btn-dark btn-sm m-1" })</li>
+                }
             </ul>
         </nav>
     </div>
 
+
 </div>
 
-
-@section Scripts {
-    <script>
-        
-        let currentPage = 1;
-        let rowsPerPage = 7;
-
-        $(document).ready(function () {
-            const rows = $('#clanovi tbody tr');
-            const totalPages = Math.ceil(rows.length / rowsPerPage);
-
-            function displayRows() {
-                rows.hide().slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage).show();
-            }
-
-            function displayPagination() {
-                $('#pagination').empty();
-                $('#pagination').append(`<button class="btn btn-sm m-1 btn-dark prev" ${currentPage === 1 ? 'disabled' : ''}>&lt;&lt; Prethodna</button>`);
-
-                for (let i = 1; i <= totalPages; i++) {
-                    const activeClass = i === currentPage ? 'btn-dark' : 'btn-secondary';
-                    $('#pagination').append(`<button class="btn btn-sm m-1 ${activeClass}" data-page="${i}">${i}</button>`);
-                }
-
-                $('#pagination').append(`<button class="btn btn-sm m-1 btn-dark next" ${currentPage === totalPages ? 'disabled' : ''}>Sledeća &gt;&gt;</button>`);
-            }
-
-            $('#pagination').on('click', 'button', function (e) {
-                e.preventDefault();
-
-                if ($(this).hasClass('prev')) {
-                    currentPage = Math.max(currentPage - 1, 1);
-                } else if ($(this).hasClass('next')) {
-                    currentPage = Math.min(currentPage + 1, totalPages);
-                } else {
-                    currentPage = +$(this).data('page');
-                }
-                displayRows();
-                displayPagination();
-
-            });
-
-            displayRows();
-            displayPagination();
-        });
-
-
-
-
-
-
-
-
-    </script>
-}
