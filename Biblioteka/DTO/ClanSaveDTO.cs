@@ -8,7 +8,7 @@ namespace Biblioteka.DTO
 {
     public class ClanSaveDTO
     {
-        public int ClanID { get; set; }
+        
 
         [Required(ErrorMessage = "Ime je obavezno polje.")]
         [StringLength(50)]

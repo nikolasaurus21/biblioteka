@@ -94,7 +94,7 @@ namespace Biblioteka.Controllers
 
             var clanDto = new ClanSaveDTO
             {
-                ClanID = clan.Id,
+                
                 Ime = clan.Ime,
                 Prezime = clan.Prezime,
                 MaticniBroj = clan.MaticniBroj,
@@ -109,14 +109,14 @@ namespace Biblioteka.Controllers
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(ClanSaveDTO clanDto)
+        public ActionResult Edit(int id, ClanSaveDTO clanDto)
         {
             if (!ModelState.IsValid)
             {
                 return View("Edit", clanDto);
             }
 
-            var clanInDb = _context.Clanovi.SingleOrDefault(c => c.Id == clanDto.ClanID);
+            var clanInDb = _context.Clanovi.SingleOrDefault(c => c.Id == id); 
 
             if (clanInDb == null)
                 return HttpNotFound();
@@ -132,6 +132,7 @@ namespace Biblioteka.Controllers
 
             return RedirectToAction("Index", "Clanovi");
         }
+
 
         public ActionResult Delete(int id)
         {

@@ -10,7 +10,7 @@
             @using (Html.BeginForm("Edit", "Clanovi", FormMethod.Post, new { @class = "p-4 rounded" }))
             {
                 @Html.AntiForgeryToken()
-                @Html.HiddenFor(model => model.ClanID)
+                
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Ime)

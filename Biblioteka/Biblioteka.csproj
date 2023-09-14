@@ -206,7 +206,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IzdanjeKnjigeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="DTO\ClanGetByIdDTO.cs" />
     <Compile Include="DTO\ClanGetDTO.cs" />
     <Compile Include="DTO\ClanSaveDTO.cs" />
     <Compile Include="DTO\NajnovijaIzdanjaDTO.cs" />
